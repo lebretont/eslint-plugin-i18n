@@ -25,3 +25,12 @@ tester.run('json-key-exists', rule, {
     },
   ],
 });
+
+tester.run('no-error', rule, {
+  valid: [{
+    code: '<LocaleText>{title}</LocaleText>',
+    options: [options]
+  }],
+  invalid: [
+  ],
+});

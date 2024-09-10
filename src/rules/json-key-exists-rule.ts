@@ -20,6 +20,8 @@ const rule = createRule({
         
         const target = findLiteralFromJSXOpeningElement(node, defaultAllowList);
         
+        if (!target) return;
+
         const text = target.value;
 
         const textTranslations = translations[text];

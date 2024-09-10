@@ -16,6 +16,8 @@ const rule = createRule({
                 const locales = options[0].locales;
                 const translations = importTranslationsFile(options[0].localesPath, locales);
                 const target = findLiteralFromJSXOpeningElement(node, defaultAllowList);
+                if (!target)
+                    return;
                 const text = target.value;
                 const textTranslations = translations[text];
                 const translationsDoesntExist = !textTranslations;
