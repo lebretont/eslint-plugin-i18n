@@ -65,15 +65,12 @@ const rule = createRule({
         }
     ],
 });
-let translations = undefined;
 function importTranslationsFile(filePath, locales) {
-    if (translations !== undefined)
-        return translations;
     const fullPath = `${process.cwd()}/${filePath}`;
     const translationsFile = (0, fs_1.readFileSync)(fullPath, 'utf-8');
     const firstIndex = translationsFile.indexOf('{');
     const translationsString = translationsFile.slice(firstIndex);
-    translations = JSON.parse(replaceLocales(translationsString, locales));
+    const translations = JSON.parse(replaceLocales(translationsString, locales));
     return translations;
 }
 function replaceLocales(translationsString, locales) {

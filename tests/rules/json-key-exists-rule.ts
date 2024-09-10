@@ -26,6 +26,20 @@ tester.run('json-key-exists', rule, {
   ],
 });
 
+tester.run('text-in-curly-braces', rule, {
+  valid: [{
+    code: '<LocaleText>{"Home"}</LocaleText>',
+    options: [options]
+  }],
+  invalid: [
+    {
+      code: '<LocaleText>{"Sign In"}</LocaleText>',
+      errors: [{ messageId: 'exists' }],
+      options: [options]
+    },
+  ],
+});
+
 tester.run('no-error', rule, {
   valid: [{
     code: '<LocaleText>{title}</LocaleText>',

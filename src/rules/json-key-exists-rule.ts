@@ -74,11 +74,7 @@ const rule = createRule({
   ],
 });
 
-let translations: Record<string, Record<string, string>> | undefined = undefined;
-
 function importTranslationsFile(filePath: string, locales: string[]) {
-
-  if (translations !== undefined) return translations;
 
   const fullPath = `${process.cwd()}/${filePath}`;
   const translationsFile = readFileSync(fullPath, 'utf-8');
@@ -87,7 +83,7 @@ function importTranslationsFile(filePath: string, locales: string[]) {
 
   const translationsString = translationsFile.slice(firstIndex);
   
-  translations = JSON.parse(replaceLocales(translationsString, locales)) as unknown as Record<string, Record<string, string>>;
+  const translations = JSON.parse(replaceLocales(translationsString, locales)) as unknown as Record<string, Record<string, string>>;
 
   return translations;
 }
